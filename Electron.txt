@@ -1,0 +1,38 @@
+
+
+Electron:
+    Typical workflow of Electron
+
+		Electron App
+		   ↓
+		Opens Desktop Window
+		   ↓
+		Loads Your Web App
+		
+Learning Stages:
+
+		Stage 1
+		Run web project inside Electron window
+
+		Stage 2
+		Add filesystem access
+
+		Stage 3
+		Package into .exe
+
+npm init -y
+npm install electron --save-dev
+
+
+
+Important Beginner Mistake to Avoid ⚠️
+
+Don't try to install Electron in both frontend and backend.
+
+That will just create confusion.
+
+Correct rule:
+
+Electron belongs to the UI layer
+
+So install it where your UI lives (frontend).
