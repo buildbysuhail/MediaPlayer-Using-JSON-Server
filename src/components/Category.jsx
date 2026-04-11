@@ -1,6 +1,9 @@
-import React from 'react'
+import {useState} from 'react'
 
 function Category() {
+  const [category, setCategory] = useState({
+    catId: "", catName: "", catVideos: []
+  })
   return (
     <div>
       <button onClick={()=>document.getElementById('my_modal_6').showModal()}

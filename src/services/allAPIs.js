@@ -15,5 +15,18 @@ import commonApi from "./commonApi";
         return await commonApi('DELETE',`${base_url}/allVideos/${id}`,{})
     }
 
+    // Category Related APIs:
+    export const addCategory = async(data)=> {
+        return await commonApi('POST', `${base_url}/categories`, data)
+    }
+
+    export const getCategory = async()=> {
+        return await commonApi('GET', `${base_url}/categories`, '')
+    }
+
+    export const deleteCategory = async(id)=> {
+        return await commonApi('DELETE', `${base_url}/categories/${id}`, {})
+    }
+
     
 // export const allAPIs = {addVideo, getVideo, deleteVideo} 
