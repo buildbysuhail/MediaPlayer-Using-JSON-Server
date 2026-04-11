@@ -7,7 +7,7 @@ import Landing from './pages/Landing'
 import Home from './pages/Home'
 import History from './pages/History'
 // import 'react-toastify/dist/ReactToastify.css'
-// import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -20,7 +20,7 @@ function App() {
         <Route path='/home' element={<Home/>} /> 
         <Route path='/his' element={<History/>} />
       </Routes>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Footer/>
     </>
   )

@@ -1,13 +1,12 @@
 import React from "react";
 
-
-function VideoCard({video}) {
+function VideoCard({ video, onDelete }) {
   return (
     <div className="flex justify-center items-center p-4">
       <div className="card bg-base-100 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
         <figure className="overflow-hidden">
-          <img 
-            style={{ cursor: "pointer", height:"150px" }}
+          <img
+            style={{ cursor: "pointer", height: "150px" }}
             onClick={() => document.getElementById("my_modal_5").showModal()}
             src={video.videoImgUrl}
             alt="Shoes"
@@ -18,10 +17,10 @@ function VideoCard({video}) {
           <h2 className="card-title text-sm lg:text-md font-bold text-gray-800">
             {video.caption}
           </h2>
-          <p className="text-[11px] text-gray-600 truncate ">
-            {video.caption}
-          </p>
-          <i className="fa-solid w-full text-right fa-trash fa-sm mt-1 text-red-600 hover:text-red-800 cursor-pointer transition-colors duration-200" />
+          <p className="text-[11px] text-gray-600 truncate ">{video.caption}</p>
+          <button className="" onClick={() => onDelete(video.id)}>
+            <i className="fa-solid w-full text-right fa-trash fa-sm mt-1 text-red-600 hover:text-red-800 cursor-pointer transition-colors duration-200" />
+          </button>
         </div>
       </div>
 
