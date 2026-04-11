@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import AddVideo from '../components/AddVideo'
 import VideoList from '../components/VideoList'
 import Category from '../components/Category'
@@ -7,6 +7,7 @@ import { FaHistory } from "react-icons/fa";
 
 
 function Home() {
+  const [refreshKey, setRefreshKey] = useState(0);
   return (
     // start
     <div className='bg-green-50  flex flex-col  sm:items-center sm:justify-center'>     
@@ -19,8 +20,8 @@ function Home() {
       
   <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-7 lg:grid-cols-7 p-2 max-w-8xl mx-auto w-full">
       
-      <div className="flex justify-center  sm:justify-center md:justify-start lg:justify-start p-4 md:w-22"><AddVideo/></div>
-      <div className="col-span-4 flex sm:justify-center md:justify-start px-9 py-4 rounded-lg w-full md:w-[500px] lg:w-[600px]"><VideoList/></div>
+      <div className="flex justify-center  sm:justify-center md:justify-start lg:justify-start p-4 md:w-22"><AddVideo onVideoUploaded={()=>setRefreshKey(prev => prev + 1)} /></div>
+      <div className="col-span-4 flex sm:justify-center md:justify-start px-9 py-4 rounded-lg w-full md:w-[500px] lg:w-[600px]"><VideoList refreshTrigger={refreshKey}/></div>
       <div className="col-span-2  justify-center sm:justify-center md:justify-end lg:justify-end p-4"><Category/></div>
     </div>
     </div>

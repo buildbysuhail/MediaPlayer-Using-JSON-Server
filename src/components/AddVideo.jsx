@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { addVideo } from '../services/allAPIs';
 
-function AddVideo() {
+function AddVideo({ onVideoUploaded }) {
 // StateManagement For Storing Details Abt Video when uploading(User gives the Datas like video ID, Video Image URL,...)
 const [video, setVideo] = useState({
   videoID : "", caption: "", videoImgUrl: "", videoUrl: ""
@@ -35,6 +35,7 @@ const handleUpload=async()=>{
       toast.success("Uploading Success")
       handleClose() 
       setVideo({videoID:"", caption: "", videoImgUrl: "", videoUrl: ""})
+      onVideoUploaded() // Call the callback function to refresh the video list in Home component
     }
     else{
       console.log(result);
@@ -49,7 +50,7 @@ const handleUpload=async()=>{
 
   return (
     <div>
-      <button className='btn bg-green-50 outline-green-50' onClick={()=>document.getElementById('my_modal_4').showModal()}>
+      <button className='btn bg-green-50 outline-green-50' title='Add new video' onClick={()=>document.getElementById('my_modal_4').showModal()}>
         <FaPlusCircle className='fa-2xl fill-amber-900' />
       </button>
       {/* <ToastContainer/> */}

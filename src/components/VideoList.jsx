@@ -3,12 +3,12 @@ import VideoCard from "./VideoCard";
 import { getVideo, deleteVideo } from "../services/allAPIs";
 import { toast } from "react-toastify";
 
-function VideoList() {
+function VideoList({ refreshTrigger }) {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
     getVideoData();
-  }, []);
+  }, [refreshTrigger]);
 
 
   const getVideoData = async () => {
@@ -16,7 +16,7 @@ function VideoList() {
       const videos = await getVideo();
       setVideoData(videos?.data);
       console.log(videos);
-      toast.success("Videos fetched successfully!");
+      // toast.success("Videos fetched successfully!");
     } catch (err) {
       console.error("Failed to fetch videos", err);
       toast.error("Failed to fetch videos. Please try again.");
