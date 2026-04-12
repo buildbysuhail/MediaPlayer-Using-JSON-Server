@@ -4,6 +4,7 @@ import VideoList from '../components/VideoList'
 import Category from '../components/Category'
 import { Link } from 'react-router-dom'
 import { FaHistory } from "react-icons/fa";
+import CategoryList from '../components/CategoryList'
 
 
 function Home() {
@@ -22,11 +23,15 @@ function Home() {
       
       <div className="flex justify-center  sm:justify-center md:justify-start lg:justify-start p-4 md:w-22"><AddVideo onVideoUploaded={()=>setRefreshKey(prev => prev + 1)} /></div>
       <div className="col-span-4 flex sm:justify-center md:justify-start px-9 py-4 rounded-lg w-full md:w-[500px] lg:w-[600px]"><VideoList refreshTrigger={refreshKey}/></div>
-      <div className="col-span-2  justify-center sm:justify-center md:justify-end lg:justify-end p-4"><Category/></div>
+      <div className="col-span-2  justify-center sm:justify-center md:justify-end lg:justify-end p-4">
+        <div className="flex flex-col">
+        <Category/>
+        <CategoryList/>
+        </div>
+        </div>
     </div>
     </div>
-  )
+  );
 }
 
-
-export default Home
+export default Home;

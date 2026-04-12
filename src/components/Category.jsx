@@ -1,9 +1,28 @@
 import {useState} from 'react'
+import { toast } from 'react-toastify'
+import { addCategory } from '../services/allAPIs'
 
 function Category() {
   const [category, setCategory] = useState({
     catId: "", catName: "", catVideos: []
   })
+
+
+  const submitForm = async () => {
+    const { catId, catName } = category
+
+    if(!catId || !catName) {
+      toast.info("Please fill properly")
+    } else {
+      const res = await addCategory(category)
+      if(res.status == 201){
+        toast.success("Category Added!!");
+      } else {
+        toast.error("Categor Addition Failed!!")
+        console.log(res);
+      }
+    }
+  }
   return (
     <div>
       <button onClick={()=>document.getElementById('my_modal_6').showModal()}
@@ -17,12 +36,12 @@ function Category() {
     <h3 className="font-bold text-lg">Add Category Details..</h3>
 
     <label className="floating-label mt-2 flex justify-center">
-       <input type="text" placeholder="Enter ID for Category" className="input input-md bg-sky-100" />
+       <input type="text" onChange={(e)=> setCategory({...category, catId: e.target.value})} placeholder="Enter ID for Category" className="input input-md bg-sky-100" />
         <span>Category ID</span>
     </label>
 
     <label className="floating-label mt-2 flex justify-center">
-       <input type="text" placeholder="Pick a Name for Category" className="input input-md bg-sky-100 peer" />
+       <input type="text" onChange={(e)=> setCategory({...category, catName: e.target.value})} placeholder="Pick a Name for Category" className="input input-md bg-sky-100 peer" />
         <span>Category Name</span>
     </label>    
 
@@ -31,7 +50,7 @@ function Category() {
         {/* if there is a button in form, it will close the modal */}
         <button className="btn btn-error rounded-xl">Close</button>
       </form>
-        <button className='btn btn-info rounded-xl'>Save</button>
+        <button onClick={submitForm} className='btn btn-info rounded-xl'>Save</button>
     </div>
   </div>
 </dialog>
