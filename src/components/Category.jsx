@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { toast } from 'react-toastify'
 import { addCategory } from '../services/allAPIs'
 
-function Category() {
+function Category({ setCategoryFlag }) {
   const [category, setCategory] = useState({
     catId: "", catName: "", catVideos: []
   })
@@ -17,8 +17,12 @@ function Category() {
       const res = await addCategory(category)
       if(res.status == 201){
         toast.success("Category Added!!");
+        // CLOSE MODAL HERE
+      document.getElementById('my_modal_6').close();
+      setCategory({catId: "", catName: "", catVideos: []})
+      setCategoryFlag(prev => !prev);
       } else {
-        toast.error("Categor Addition Failed!!")
+        toast.error("Category Addition Failed!!")
         console.log(res);
       }
     }
