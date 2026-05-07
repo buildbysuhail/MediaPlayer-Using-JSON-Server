@@ -1,13 +1,13 @@
 import React from "react";
 
-function VideoCard({ video, onDelete }) {
+function VideoCard({ video, onDelete, id }) {
   return (
     <div className="flex justify-center items-center p-4">
       <div className="card bg-base-100 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
         <figure className="overflow-hidden">
           <img
             style={{ cursor: "pointer", height: "150px" }}
-            onClick={() => document.getElementById("my_modal_5").showModal()}
+            onClick={() => document.getElementById(`my_modal_5-${id}`).showModal()}
             src={video.videoImgUrl}
             alt="Shoes"
             className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
@@ -25,7 +25,7 @@ function VideoCard({ video, onDelete }) {
       </div>
 
       {/* Modal */}
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+      <dialog id={`my_modal_5-${id}`} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box  p-6 rounded-xl max-w-lg w-full">
           <iframe
             className="rounded-lg shadow-2xl w-full h-64 sm:h-80"

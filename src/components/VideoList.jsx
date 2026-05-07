@@ -36,14 +36,16 @@ function VideoList({ refreshTrigger }) {
   // useEffect(() => {
   //   console.log("Updated videoData :", videoData);
   // }, [videoData]);
+  console.log("Current videoData state:", videoData);
 
   return (
     <>
       {videoData?.length > 0 ? (
         <div className="grid grid-cols-3">
-          {videoData.map((item) => (
-            <div className="bg-green-100">
-              <VideoCard video={item} onDelete={handleDelete} />
+          {videoData.map((item, index) => (
+            <div id={`video-${index}`}
+             className="bg-green-100">
+              <VideoCard video={item} onDelete={handleDelete} id={index} />
             </div>
           ))}
         </div>
