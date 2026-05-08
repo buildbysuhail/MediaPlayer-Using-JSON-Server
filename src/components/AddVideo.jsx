@@ -23,13 +23,19 @@ const handleUpload=async()=>{
     toast.error("Please Fill Completly")
   }
   else {
-    const code = videoUrl.split("v=")[1]
+    // const code = videoUrl.split("v=")[1]
+    const code = videoUrl.split("v=")[1]?.split("&")[0]
     // Meca=hanism for converting Watch Url into Embeded Url.
 
-    const embedUrl = `https://www.youtube.com/embed/${code}?tNR80d3VFHk&`
-    video.videoUrl = embedUrl
+    const embedUrl = `https://www.youtube.com/embed/${code}`
 
-    const result = await addVideo(video)
+    const updatedVideo = {
+    ...video,
+    videoUrl: embedUrl
+  }
+console.log(embedUrl, "embed url");
+// return
+    const result = await addVideo(updatedVideo) 
     if(result.status===201)
     {
       toast.success("Uploading Success")
@@ -61,19 +67,38 @@ const handleUpload=async()=>{
     <h3 className="font-bold text-xl">Upload Video Details</h3>
     <div className='max-w-lg w-full flex flex-col justify-center items-center'>
       <label className="floating-label mt-2 ">
-        <input type="text" onChange={(e)=>{setVideo({...video, videoID:e.target.value})}} placeholder="Video ID" className="input input-md bg-indigo-200" />
+        <input type="text" 
+          onChange={(e)=>{setVideo({...video, videoID:e.target.value})}} 
+          placeholder="Video ID"
+          value={video?.videoID}
+          className="input input-md bg-indigo-200" 
+        />
           <span>video id</span>
       </label>
       <label className="floating-label mt-2">
-        <input type="text" onChange={(e)=>{setVideo({...video, caption:e.target.value})}} placeholder="Caption" className="input input-md bg-indigo-200" />
+        <input type="text" 
+          onChange={(e)=>{setVideo({...video, caption:e.target.value})}} 
+          placeholder="Caption" 
+          value={video?.caption}
+          className="input input-md bg-indigo-200" />
           <span>caption</span>
       </label>
       <label className="floating-label mt-2">
-        <input type="text" onChange={(e)=>{setVideo({...video, videoImgUrl:e.target.value})}} placeholder="Video Image URL" className="input input-md bg-indigo-200" />
+        <input type="text" 
+          onChange={(e)=>{setVideo({...video, videoImgUrl:e.target.value})}} 
+          placeholder="Video Image URL"
+          value={video?.videoImgUrl} 
+          className="input input-md bg-indigo-200" 
+        />
           <span>image url</span>
       </label>
       <label className="floating-label mt-2">
-        <input type="text" onChange={(e)=>{setVideo({...video, videoUrl:e.target.value})}} placeholder="Youtube Video URL" className="input input-md bg-indigo-200" />
+        <input type="text" 
+          onChange={(e)=>{setVideo({...video, videoUrl:e.target.value})}} 
+          placeholder="Youtube Video URL" 
+          value={video?.videoUrl}
+          className="input input-md bg-indigo-200" 
+        />
           <span>video url</span>
       </label>
     </div>

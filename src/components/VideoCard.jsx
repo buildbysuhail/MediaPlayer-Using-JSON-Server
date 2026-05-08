@@ -26,7 +26,7 @@ function VideoCard({ video, onDelete, id }) {
 
       {/* Modal */}
       <dialog id={`my_modal_5-${id}`} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box  p-6 rounded-xl max-w-lg w-full">
+        <div className="modal-box  p-6 rounded-md max-w-lg w-full">
           <iframe
             className="rounded-lg shadow-2xl w-full h-64 sm:h-80"
             src={video.videoUrl}
