@@ -1,6 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getHistory, deleteHistory } from '../services/allAPIs'
+import { toast } from 'react-toastify';
+
 
 function History() {
+  const [history, setHistory] = useState([]);
+
+  const fetchHistory = async () => {
+    try {
+      const historyData = await getHistory();
+      // console.log(historyData, "history data");
+      setHistory(historyData?.data || []);
+    } catch (error) {
+      console.error("Error fetching history:", error);
+      toast.error("Failed to fetch watch history");
+    }
+  };
+
+  const handleDeleteHistory = async (videoId) => {
+    try {
+      const res = await deleteHistory(videoId);
+      console.log(res, "deleted historyyyyy");
+      
+      toast.success("History item deleted successfully");
+      fetchHistory(); // Refresh the history list
+    } catch (error) {
+      console.error("Error deleting history:", error);
+      toast.error("Failed to delete history item");
+    }
+  };
+
+  useEffect(() => {
+    fetchHistory();
+  }, []);
+// console.log(history, "current history state");
+
+  if (history.length === 0) {
+    return (
+      <div className='p-3 bg-amber-50 flex flex-col items-center'> 
+        <h2 className='text-2xl text-red-900 self-start'>Watch History</h2>
+        <p className='text-lg text-gray-600 mt-4'>No watch history available.</p>
+      </div>
+    );
+  }
+
   return (
     <div className='p-3 bg-amber-50 flex flex-col items-center'>
       <h2 className='text-2xl text-red-900 self-start'>Watch History</h2>
@@ -17,17 +60,19 @@ function History() {
     </thead>
     <tbody>
       {/* row */}
-      <tr className='hover:bg-neutral-900 hover:text-neutral-300'>
-        <th>1</th>
-        <td>http:///www.youtube.com?watch=dasdde21342sd23l</td>
-        <td>10/02/2025</td>
-        <td>
-          <button className='btn border-none outline-none shadow-none bg-transparent focus:ring-0'>
-            <i className="fa-solid fa-trash" style={{color: "#e40707",}} />
-          </button>
-       </td>
-      </tr>
-      
+      {history?.map((item) => (
+        <tr className='hover:bg-neutral-900 hover:text-neutral-300' key={item.videoId}>
+          <th>{item.videoId}</th>
+          <td>{item.videoUrl}</td>
+          <td>{item.dateAndTime}</td>
+          <td>
+            <button onClick={()=> handleDeleteHistory(item.id)} className='btn border-none outline-none shadow-none bg-transparent focus:ring-0'>
+              <i className="fa-solid fa-trash" style={{color: "#e40707",}} />
+            </button>
+          </td>
+        </tr>
+      ))}
+
     </tbody>
   </table>
 

@@ -1,13 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import { addHistory } from "../services/allAPIs";
+
 
 function VideoCard({ video, onDelete, id }) {
+console.log(video, "video in card");
+  const [history, setHistory] = useState({videoId: "", videoUrl: "", dateAndTime: ""});
+
+  const handleOpenModal = async (id) => {
+    const dt = new Date().toLocaleString()
+  document.getElementById(`my_modal_5-${id}`).showModal()
+    setHistory({
+      videoId: video.id,
+      videoUrl: video.videoUrl,
+      dateAndTime: dt
+    });
+
+    const result = await addHistory(history)
+  // Additional functionality here
+  console.log(result, "history added");
+}
+
+const handleCloseModal = (id) => {
+  document.getElementById(`my_modal_5-${id}`).close()
+
+  console.log("Closed")
+}
+
+
   return (
     <div className="flex justify-center items-center p-4">
       <div className="card bg-base-100 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
         <figure className="overflow-hidden">
           <img
             style={{ cursor: "pointer", height: "150px" }}
-            onClick={() => document.getElementById(`my_modal_5-${id}`).showModal()}
+            onClick={() => handleOpenModal(id)}
             src={video.videoImgUrl}
             alt="Shoes"
             className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
@@ -37,11 +63,17 @@ function VideoCard({ video, onDelete, id }) {
             allowFullScreen
           ></iframe>
           <div className="modal-action mt-4">
-            <form method="dialog">
+            {/* <form method="dialog">
               <button className="btn btn-error btn-sm px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200">
                 Close
               </button>
-            </form>
+            </form> */}
+            <button
+              onClick={() => handleCloseModal(id)}
+              className="btn btn-error btn-sm px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200"
+            >
+              Close
+            </button>
           </div>
         </div>
       </dialog>

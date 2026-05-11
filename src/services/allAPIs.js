@@ -28,5 +28,17 @@ import commonApi from "./commonApi";
         return await commonApi('DELETE', `${base_url}/categories/${id}`, {})
     }
 
-    
+    // History Related APIs:
+    export const addHistory = async(data)=> {
+        return await commonApi('POST', `${base_url}/history`, data)
+    }
+
+    export const getHistory = async()=> {
+        return await commonApi('GET', `${base_url}/history`, '')
+    }
+
+    export const deleteHistory = async(id)=> {
+        return await commonApi('DELETE', `${base_url}/history/${id}`, {})
+    }
+
 // export const allAPIs = {addVideo, getVideo, deleteVideo} 
