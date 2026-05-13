@@ -6,23 +6,42 @@ function VideoCard({ video, onDelete, id }) {
 console.log(video, "video in card");
   const [history, setHistory] = useState({videoId: "", videoUrl: "", dateAndTime: ""});
 
-  const handleOpenModal = async (id) => {
-    const dt = new Date().toLocaleString()
-  document.getElementById(`my_modal_5-${id}`).showModal()
-    setHistory({
-      videoId: video.id,
-      videoUrl: video.videoUrl,
-      dateAndTime: dt
-    });
+//   const handleOpenModal = async (id) => {
+//     const dt = new Date().toLocaleString()
+//   document.getElementById(`my_modal_5-${id}`).showModal()
+//     setHistory({
+//       videoId: video.id,
+//       videoUrl: video.videoUrl,
+//       dateAndTime: dt
+//     });
+// console.log(history, "history before adding");
+//     const result = await addHistory(history)
+//   // Additional functionality here
+//   console.log(result, "history added");
+// }
 
-    const result = await addHistory(history)
-  // Additional functionality here
+const handleOpenModal = async (id) => {
+
+  const dt = new Date().toLocaleString();
+
+  document.getElementById(`my_modal_5-${id}`).showModal();
+
+  const historyData = {
+    videoId: video.id,
+    videoUrl: video.videoUrl,
+    dateAndTime: dt
+  };
+
+  console.log(historyData, "history before adding");
+
+  const result = await addHistory(historyData);
+
   console.log(result, "history added");
-}
+};
 
 const handleCloseModal = (id) => {
   document.getElementById(`my_modal_5-${id}`).close()
-
+  setHistory({videoId: "", videoUrl: "", dateAndTime: ""})
   console.log("Closed")
 }
 
