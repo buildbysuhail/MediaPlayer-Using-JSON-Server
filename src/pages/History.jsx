@@ -53,6 +53,7 @@ function History() {
     <thead>
       <tr className='text-white'>
         <th>Video ID</th>
+        <th>Caption</th>
         <th>Video URL</th>
         <th>Date and Time</th>
         <th></th>
@@ -63,6 +64,7 @@ function History() {
       {history?.map((item) => (
         <tr className='hover:bg-neutral-900 hover:text-neutral-300' key={item.videoId}>
           <th>{item.videoId}</th>
+          <td>{item.caption}</td>
           <td>{item.videoUrl}</td>
           <td>{item.dateAndTime}</td>
           <td>

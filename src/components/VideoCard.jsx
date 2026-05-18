@@ -28,6 +28,7 @@ const handleOpenModal = async (id) => {
 
   const historyData = {
     videoId: video.id,
+    caption: video.caption,
     videoUrl: video.videoUrl,
     dateAndTime: dt
   };
