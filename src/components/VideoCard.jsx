@@ -46,10 +46,16 @@ const handleCloseModal = (id) => {
   console.log("Closed")
 }
 
+const handleDrag = (ev, val) => {
+  console.log("Dargging")
+  console.log(val, "valllll")
+  ev.dataTransfer.setData("video", JSON.stringify(val));
+}
 
   return (
     <div className="flex justify-center items-center p-4">
-      <div className="card bg-base-100 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+      <div className="card bg-base-100 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300" draggable="true" onDragStart={(ev) => handleDrag(ev, video)}>
+
         <figure className="overflow-hidden">
           <img
             style={{ cursor: "pointer", height: "150px" }}

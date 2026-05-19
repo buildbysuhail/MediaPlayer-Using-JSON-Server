@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
-import { getCategory, deleteCategory as deleteCategoryAPI } from '../services/allAPIs' // ?
+import { 
+   getCategory,
+   deleteCategory as deleteCategoryAPI,
+   getspecificCategory,
+   updateCategory, 
+  } from '../services/allAPIs' // ?
 import { toast } from 'react-toastify';
 
 function CategoryList({ categoryFlag }) {
@@ -35,6 +40,28 @@ function CategoryList({ categoryFlag }) {
     }
   }
 
+  const handleDrop = async (ev, val) => {
+    ev.preventDefault();
+    console.log("dropping...")
+    console.log(val, "IDdddd");
+    const catId = val;
+    const data = JSON.parse(ev.dataTransfer.getData("video"));
+    console.log("dataaaaaaaaaa",data)
+    const res = await getspecificCategory(catId)
+    console.log(res, "resssssssss")
+    const category = res.data
+    category.catVideos.push(data)
+    const resp = await updateCategory(catId, category)
+    console.log(resp, "respppp")
+    // console.log("category:",category);
+    // Here you can implement logic to associate the dropped video with the category
+    if (resp.status === 200) {
+      toast.success("Video added to category");
+    } else {
+      toast.error("Video didnt add! something wrong!!")
+    }
+  }
+
 if (categories.length === 0) {
   return <p className="text-gray-500">No categories available</p>;
 }
@@ -50,7 +77,7 @@ if (categories.length === 0) {
 
       {categories.map((cat, index) => (
 
-        <li key={index} className="list-row">
+        <li key={index} className="list-row mb-[87px]" onDrop={(e) =>handleDrop(e, cat?.id)} onDragOver={(e) => e.preventDefault()}>
 
           {/* Optional image/icon */}
           <div>

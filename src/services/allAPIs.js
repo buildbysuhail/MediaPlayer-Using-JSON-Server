@@ -28,6 +28,14 @@ import commonApi from "./commonApi";
         return await commonApi('DELETE', `${base_url}/categories/${id}`, {})
     }
 
+    export const getspecificCategory = async(id)=> {
+        return await commonApi("GET", `${base_url}/categories/${id}`, '')
+    }
+
+    export const updateCategory=async(id, data)=> {
+        return await commonApi("PUT", `${base_url}/categories/${id}`, data)
+    }
+
     // History Related APIs:
     export const addHistory = async(data)=> {
         return await commonApi('POST', `${base_url}/history`, data)
