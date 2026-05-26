@@ -6,6 +6,7 @@ import {
    updateCategory, 
   } from '../services/allAPIs' // ?
 import { toast } from 'react-toastify';
+import VideoCard from './VideoCard';
 
 function CategoryList({ categoryFlag }) {
   const [categories, setCategories] = useState([]);
@@ -57,6 +58,7 @@ function CategoryList({ categoryFlag }) {
     // Here you can implement logic to associate the dropped video with the category
     if (resp.status === 200) {
       toast.success("Video added to category");
+      fetchCategories(); // Refresh the category list to reflect changes
     } else {
       toast.error("Video didnt add! something wrong!!")
     }
@@ -65,52 +67,61 @@ function CategoryList({ categoryFlag }) {
 if (categories.length === 0) {
   return <p className="text-gray-500">No categories available</p>;
 }
-
+console.log(categories, "categoriessssssss")
   return (
-  <div className="bg-blue-300 p-1">
-
-    <ul className="list bg-base-100 rounded-sm shadow-md">
-
-      <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
-        Category List
-      </li>
-
-      {categories.map((cat, index) => (
-
-        <li key={index} className="list-row mb-[87px]" onDrop={(e) =>handleDrop(e, cat?.id)} onDragOver={(e) => e.preventDefault()}>
-
-          {/* Optional image/icon */}
-          <div>
-            <div className="size-10 rounded-box bg-primary text-white flex items-center justify-center font-bold">
-              {cat.catName.charAt(0).toUpperCase()}
-            </div>
-          </div>
-
-          {/* Category details */}
-          <div>
-            <div>{cat.catName}</div>
-
-            <div className="text-xs uppercase font-semibold opacity-60">
-              Category ID : {cat.catId}
-            </div>
-          </div>
-
-          {/* Delete button */}
-          <button
-            onClick={() => deleteCategory(index)}
-            className="btn btn-square btn-ghost text-red-500"
-          >
-            <i className="fa-solid fa-trash"></i>
-          </button>
-
+    <div className="bg-blue-300 p-1">
+      <ul className="list bg-base-100 rounded-sm shadow-md">
+        <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
+          Category List
         </li>
 
-      ))}
+        {categories.map((cat, index) => (
+          <li
+            key={index}
+            className="list-row mb-[87px]"
+            onDrop={(e) => handleDrop(e, cat?.id)}
+            onDragOver={(e) => e.preventDefault()}
+          >
+            {/* Optional image/icon */}
+            <div>
+              <div className="size-10 rounded-box bg-primary text-white flex items-center justify-center font-bold">
+                {cat.catName.charAt(0).toUpperCase()}
+              </div>
+            </div>
 
-    </ul>
+            {/* Category details */}
+            <div>
+              <div>{cat.catName}</div>
 
-  </div>
-)
+              {/* <div className="text-xs uppercase font-semibold opacity-60">
+              Category ID : {cat.catId}
+            </div> */}
+            </div>
+
+            {/* Delete button */}
+            <button
+              onClick={() => deleteCategory(index)}
+              className="btn btn-square btn-ghost text-red-500"
+            >
+              <i className="fa-solid fa-trash"></i>
+            </button>
+
+            <div className="">
+              {cat.catVideos.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-3 bg-amber-100">
+                  {cat.catVideos?.map((video, idx) => (
+                    <div key={idx} className="w-[250px]">
+                      <VideoCard video={video} cat={true} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default CategoryList
