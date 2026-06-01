@@ -69,59 +69,53 @@ if (categories.length === 0) {
 }
 console.log(categories, "categoriessssssss")
   return (
-    <div className="bg-blue-300 p-1">
-      <ul className="list bg-base-100 rounded-sm shadow-md">
-        <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
-          Category List
-        </li>
+  <div className="bg-cyan-400 p-1">
+    <ul className="bg-base-100 rounded-sm shadow-md">
+      <li className="px-4 py-3 text-xs opacity-60 tracking-widest uppercase">
+        Category List
+      </li>
 
-        {categories.map((cat, index) => (
-          <li
-            key={index}
-            className="list-row mb-[87px]"
-            onDrop={(e) => handleDrop(e, cat?.id)}
-            onDragOver={(e) => e.preventDefault()}
-          >
-            {/* Optional image/icon */}
-            <div>
-              <div className="size-10 rounded-box bg-primary text-white flex items-center justify-center font-bold">
-                {cat.catName.charAt(0).toUpperCase()}
+      {categories.map((cat, index) => (
+        <li
+          key={cat.id || index}
+          className="border-t border-base-200"
+          onDrop={(e) => handleDrop(e, cat?.id)}
+          onDragOver={(e) => e.preventDefault()}
+        >
+          {/* Category header row */}
+          <div className="flex items-center gap-3 px-4 py-3">
+            <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">
+              {cat.catName.charAt(0).toUpperCase()}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="font-medium truncate">{cat.catName}</div>
+              <div className="text-xs text-base-content/50">
+                {cat.catVideos.length} video{cat.catVideos.length !== 1 ? 's' : ''}
               </div>
             </div>
-
-            {/* Category details */}
-            <div>
-              <div>{cat.catName}</div>
-
-              {/* <div className="text-xs uppercase font-semibold opacity-60">
-              Category ID : {cat.catId}
-            </div> */}
-            </div>
-
-            {/* Delete button */}
             <button
-              onClick={() => deleteCategory(index)}
-              className="btn btn-square btn-ghost text-red-500"
+              onClick={() => deleteCategory(cat.id)}  // ✅ Fixed: was (index)
+              className="btn btn-square btn-ghost btn-sm text-error"
             >
               <i className="fa-solid fa-trash"></i>
             </button>
+          </div>
 
-            <div className="">
-              {cat.catVideos.length > 0 && (
-                <div className="mt-3 flex flex-wrap gap-3 bg-amber-100">
-                  {cat.catVideos?.map((video, idx) => (
-                    <div key={idx} className="w-[250px]">
-                      <VideoCard video={video} cat={true} />
-                    </div>
-                  ))}
+          {/* Videos section */}
+          {cat.catVideos.length > 0 && (
+            <div className="pl-[52px] pr-4 pb-4 bg-base-200/50 flex flex-wrap gap-3">
+              {cat.catVideos.map((video, idx) => (
+                <div key={idx} className="w-[220px]">
+                  <VideoCard video={video} cat={true} />
                 </div>
-              )}
+              ))}
             </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 }
 
 export default CategoryList
