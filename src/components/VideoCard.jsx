@@ -53,7 +53,7 @@ const handleDrag = (ev, val) => {
 }
 
   return (
-    <div className="flex justify-center items-center p-4">
+    <div className="flex justify-center items-center p-1">
       <div className="card bg-base-100 w-full max-w-sm sm:max-w-md lg:max-w-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300" draggable="true" onDragStart={(ev) => handleDrag(ev, video)}>
 
         <figure className="overflow-hidden">

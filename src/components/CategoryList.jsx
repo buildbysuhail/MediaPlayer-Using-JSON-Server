@@ -102,15 +102,17 @@ console.log(categories, "categoriessssssss")
           </div>
 
           {/* Videos section */}
-          {cat.catVideos.length > 0 && (
-            <div className="pl-[52px] pr-4 pb-4 bg-base-200/50 flex flex-wrap gap-3">
-              {cat.catVideos.map((video, idx) => (
-                <div key={idx} className="w-[220px]">
-                  <VideoCard video={video} cat={true} />
+            {cat.catVideos.length > 0 && (
+              <div className="px-3 pb-4 bg-base-200/50">
+                <div className="grid grid-cols-2 gap-2 items-start">
+                  {cat.catVideos.map((video, idx) => (
+                    <div key={idx} className="p-1 h-auto">
+                      <VideoCard video={video} cat={true} />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            )}
         </li>
       ))}
     </ul>
