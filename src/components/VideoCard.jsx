@@ -58,7 +58,7 @@ const handleDrag = (ev, val) => {
 
         <figure className="overflow-hidden">
           <img
-            style={{ cursor: "pointer", height: "150px" }}
+            style={{ cursor: "pointer",}}
             onClick={() => handleOpenModal(id)}
             src={video.videoImgUrl}
             alt="Shoes"
