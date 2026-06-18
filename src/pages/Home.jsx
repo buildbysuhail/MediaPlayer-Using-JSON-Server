@@ -11,26 +11,33 @@ function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [categoryFlag, setCategoryFlag] = useState(false);
   return (
-    // start
-    <div className='bg-green-50  flex flex-col  sm:items-center sm:justify-center'>     
-      <div className='flex md:text-3xl p-5 w-full sm:text-2xl  max-auto'>
+    <div className='bg-green-50 h-screen flex flex-col overflow-hidden'>
+      {/* Header */}
+      <div className='flex md:text-3xl p-5 w-full sm:text-2xl flex-shrink-0'>
         <h1 className='ms-5 sm:ms-39 text-violet-500 md:text-violet-800'>All Videos</h1>
-        <Link to={'/his'} className='ml-auto justify-end underline font-light hidden sm:hidden md:block'>Watch History</Link>
-        <Link to={'/his'} className='ml-auto justify-end block sm:block md:hidden'><FaHistory /></Link>
+        <Link to={'/his'} className='ml-auto underline font-light hidden md:block'>Watch History</Link>
+        <Link to={'/his'} className='ml-auto block md:hidden'><FaHistory /></Link>
+      </div>
 
-      </div>  
-      
-  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-7 lg:grid-cols-7 p-2 max-w-8xl mx-auto w-full">
-      
-      <div className="flex justify-center  sm:justify-center md:justify-start lg:justify-start p-4 md:w-22"><AddVideo onVideoUploaded={()=>setRefreshKey(prev => prev + 1)} /></div>
-      <div className="col-span-4 flex sm:justify-center md:justify-start px-9 py-4 rounded-lg w-full md:w-[500px] lg:w-[600px]"><VideoList refreshTrigger={refreshKey}/></div>
-      <div className="col-span-2  justify-center sm:justify-center md:justify-end lg:justify-end p-4">
-        <div className="flex flex-col">
-        <Category setCategoryFlag={setCategoryFlag} />
-        <CategoryList categoryFlag={categoryFlag} />
+      {/* Grid — fills remaining height, each column scrolls independently */}
+      <div className="grid grid-cols-1 custom-scroll sm:grid-cols-1 md:grid-cols-7 lg:grid-cols-7 p-2 max-w-8xl mx-auto w-full flex-1 min-h-0">
+
+        <div className="flex justify-center md:justify-start p-4 md:w-22 flex-shrink-0">
+          <AddVideo onVideoUploaded={() => setRefreshKey(prev => prev + 1)} />
         </div>
+
+        <div className="col-span-4 overflow-y-auto custom-scroll px-9 py-4 rounded-lg w-full md:w-[500px] lg:w-[600px]">
+          <VideoList refreshTrigger={refreshKey} />
         </div>
-    </div>
+
+        <div className="col-span-2 overflow-y-auto custom-scroll p-4">
+          <div className="flex flex-col">
+            <Category setCategoryFlag={setCategoryFlag} />
+            <CategoryList categoryFlag={categoryFlag} />
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
