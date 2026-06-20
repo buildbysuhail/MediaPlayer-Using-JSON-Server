@@ -69,7 +69,7 @@ if (categories.length === 0) {
 }
 console.log(categories, "categoriessssssss")
   return (
-  <div className="bg-cyan-400 p-1">
+  <div className="p-1">
     <ul className="bg-base-100 rounded-sm shadow-md">
       <li className="px-4 py-3 text-xs opacity-60 tracking-widest uppercase">
         Category List
@@ -84,7 +84,7 @@ console.log(categories, "categoriessssssss")
         >
           {/* Category header row */}
           <div className="flex items-center gap-3 px-4 py-3">
-            <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-bold shrink-0">
               {cat.catName.charAt(0).toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">

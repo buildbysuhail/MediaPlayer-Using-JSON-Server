@@ -3,11 +3,13 @@
 /* Firefox */
 .custom-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #a78bfa transparent;
+  scrollbar-color: #aaa7b8 #f9f1fc;
+
+  /* scrollbar-track-color: #888f8a; */
 }
 
 /* Chrome, Edge, Safari */
 .custom-scroll::-webkit-scrollbar { width: 6px; }
 .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-.custom-scroll::-webkit-scrollbar-thumb { background-color: #a78bfa; border-radius: 999px; }
-.custom-scroll::-webkit-scrollbar-thumb:hover { background-color: #7c3aed; }
+.custom-scroll::-webkit-scrollbar-thumb { background-color: #58565f; border-radius: 999px; }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background-color: #af9dce; }
