@@ -13,16 +13,18 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className="h-screen flex flex-col overflow-hidden">
       <Header/>
+      <div className="flex-1 min-h-0 overflow-y-auto">
       <Routes>
         <Route path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} /> 
         <Route path='/his' element={<History/>} />
       </Routes>
-      <ToastContainer />
       <Footer/>
-    </>
+      </div>
+      <ToastContainer />
+      </div>
   )
 }
 
