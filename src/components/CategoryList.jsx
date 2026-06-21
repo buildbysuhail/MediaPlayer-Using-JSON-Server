@@ -7,6 +7,7 @@ import {
   } from '../services/allAPIs' // ?
 import { toast } from 'react-toastify';
 import VideoCard from './VideoCard';
+import CategoryCard from './CategoryCard';
 
 function CategoryList({ categoryFlag }) {
   const [categories, setCategories] = useState([]);
@@ -107,7 +108,8 @@ console.log(categories, "categoriessssssss")
                 <div className="grid grid-cols-2 gap-2 items-start">
                   {cat.catVideos.map((video, idx) => (
                     <div key={idx} className="p-1 h-auto">
-                      <VideoCard video={video} cat={true} />
+                      <CategoryCard video={video}  />
+                      {/* onDelete must pass here */}
                     </div>
                   ))}
                 </div>
