@@ -42,6 +42,25 @@ function CategoryList({ categoryFlag }) {
     }
   }
 
+  const removeVideoFromCategory = async (id, videoId) => {
+    try {
+      const result = await getspecificCategory(id)
+
+      const category = result?.data
+
+        category.catVideos = category.catVideos.filter(
+          (item) => item.id !== videoId,
+        );
+// return console.log(category, videoId, "categoryyyyyyyyyyyy")
+      await updateCategory(id, category);
+      fetchCategories();
+      toast.success("Video removed from category")
+    } catch (err) {
+      console.error("Failed to remove video from category", err);
+      toast.error("Failed to remove video")
+    }
+  }
+
   const handleDrop = async (ev, val) => {
     ev.preventDefault();
     console.log("dropping...")
@@ -108,7 +127,7 @@ console.log(categories, "categoriessssssss")
                 <div className="grid grid-cols-2 gap-2 items-start">
                   {cat.catVideos.map((video, idx) => (
                     <div key={idx} className="p-1 h-auto">
-                      <CategoryCard video={video}  />
+                      <CategoryCard video={video} onDelete={() => removeVideoFromCategory(cat?.id, video?.id)} />
                       {/* onDelete must pass here */}
                     </div>
                   ))}

@@ -43,10 +43,10 @@ function CategoryCard({ video, onDelete }) {
             {video.caption}
           </h3>
 
-          <div className="flex justify-end mt-2">
+          <div className="flex justify-end mt-1">
             <button
-              onClick={() => onDelete(video)}
-              className="text-red-500 hover:text-red-700"
+              onClick={onDelete}
+              className="text-red-500 hover:text-red-700 cursor-pointer"
             >
               <i className="fa-solid fa-trash"></i>
             </button>

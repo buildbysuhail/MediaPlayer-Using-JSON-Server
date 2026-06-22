@@ -1,3 +1,4 @@
+import { data } from "react-router-dom";
 import { base_url } from "./base_url";
 import commonApi from "./commonApi";
 
@@ -32,7 +33,7 @@ import commonApi from "./commonApi";
         return await commonApi("GET", `${base_url}/categories/${id}`, '')
     }
 
-    export const updateCategory=async(id, data)=> {
+    export const updateCategory = async(id, data)=> {
         return await commonApi("PUT", `${base_url}/categories/${id}`, data)
     }
 
