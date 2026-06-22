@@ -30,11 +30,14 @@ function Home() {
           <VideoList refreshTrigger={refreshKey} />
         </div>
 
-        <div className="col-span-2 overflow-y-auto custom-scroll p-4">
-          <div className="flex flex-col">
+        <div className="col-span-2 flex flex-col overflow-y-auto custom-scroll p-4">
+          <div className="shrink-0">
             <Category setCategoryFlag={setCategoryFlag} />
+          </div>
+           <div className="flex-1 min-h-0 flex flex-col">
             <CategoryList categoryFlag={categoryFlag} />
           </div>
+         
         </div>
 
       </div>
