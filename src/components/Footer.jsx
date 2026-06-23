@@ -25,7 +25,8 @@ function Footer() {
     </div>
   </nav>
   <aside>
-    <p>Copyright © {new Date().getFullYear()} - All right reserved by <span className='text-lime-700 font-extrabold'>Polosys</span> Ltd</p>
+    
+    <p>Copyright © {new Date().getFullYear()} - <span className="text-red-900">StreamBox</span>. All rights reserved.</p>
   </aside>
 </footer>
     </div>
