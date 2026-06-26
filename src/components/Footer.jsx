@@ -12,15 +12,21 @@ function Footer() {
     <a className="link link-hover">Contact</a>
   </nav>
   <nav>
-    <div className="grid grid-flow-col gap-4 md:gap-15 lg:gap-33">
-      <a>
-      <i className="fa-brands fa-twitter fa-2xl text-blue-700" />
+    <div className="grid grid-flow-col gap-4 md:gap-10 lg:gap-12">
+      <a className='cursor-pointer' href='https://www.linkedin.com/in/muhammed-suhail-t/'
+        target='_blank'
+        rel="noopener noreferrer"
+      >
+        <i className="fa-brands fa-square-linkedin fa-xl text-blue-900"/>
       </a>
-      <a>
-      <i className="fa-brands fa-youtube fa-2xl text-red-600" />
+      <a className='cursor-pointer'>
+      <i className="fa-brands fa-twitter fa-xl text-blue-700" />
       </a>
-      <a>
-      <i className="fa-brands fa-facebook-f fa-2xl text-indigo-800" />
+      <a className='cursor-pointer'>
+      <i className="fa-brands fa-youtube fa-xl text-red-600" />
+      </a>
+      <a className='cursor-pointer'>
+      <i className="fa-brands fa-facebook-f fa-xl text-indigo-800" />
       </a>
     </div>
   </nav>
