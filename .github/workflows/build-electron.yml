@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
 
   push:
-    branches:
-      - master
+    tags:
+      - "v*"
+
+  permissions:
+  contents: write
 
 jobs:
   build:
@@ -26,8 +29,14 @@ jobs:
       - name: Build Electron App
         run: npx electron-builder --publish never
 
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: MediaPlayer
-          path: release/
+          files: |
+            release/Media Player Setup 1.0.0.exe
+
+      # - name: Upload Build Artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: MediaPlayer
+      #     path: release/
