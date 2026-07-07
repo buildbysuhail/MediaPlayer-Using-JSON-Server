@@ -90,10 +90,10 @@ if (categories.length === 0) {
 console.log(categories, "categoriessssssss")
   return (
   <div className="flex flex-col min-h-0 flex-1">
-    <div className="shrink-0 px-4 py-3 text-xs opacity-60 tracking-widest uppercase bg-base-100 rounded-t-sm shadow-md">
+    <div className="shrink-0 bg-sky-100 px-4 py-3 text-xs opacity-60 tracking-widest uppercase bg-base-100 rounded-t-sm shadow-md">
       Category List
     </div>
-    <ul className="bbg-base-100 rounded-b-sm shadow-md overflow-y-auto custom-scroll flex-1">
+    <ul className="bg-sky-50 rounded-b-sm shadow-md overflow-y-auto custom-scroll flex-1">
       {/* <li className="px-4 py-3 text-xs opacity-60 tracking-widest uppercase">
         Category List
       </li> */}

@@ -23,7 +23,12 @@ function Header() {
     //   Download the App
     // </button>
   
-    <button className="btn btn-xs sm:btn-sm md:btn-md bg-green-50 font-bold" title='Download the App'>
+    <button className="btn btn-xs sm:btn-sm md:btn-md bg-green-50 font-bold" title='Download the App'
+     onClick={()=>{
+      window.location.href = "/downloads/Media%20Player%20Setup%201.0.0.exe";
+     }}
+    //  download="/downloads/Media Player.exe"
+    > 
        Download
     </button>
   )}

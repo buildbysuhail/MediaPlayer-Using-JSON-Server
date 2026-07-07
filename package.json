@@ -1,7 +1,7 @@
 {
   "name": "media-player",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -42,21 +42,18 @@
   "author": "",
   "license": "ISC",
   "build": {
-  "appId": "com.suhail.mediaplayer",
-  "productName": "Media Player",
-
-  "directories": {
-    "output": "release"
-  },
-
-  "files": [
-    "dist/**/*",
-    "main.cjs",
-    "package.json"
-  ],
-
-  "win": {
-    "target": "nsis"
+    "appId": "com.suhail.mediaplayer",
+    "productName": "Media Player",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.cjs",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
   }
-}
 }

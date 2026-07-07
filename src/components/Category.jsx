@@ -30,7 +30,7 @@ function Category({ setCategoryFlag }) {
   return (
     <div>
       <button onClick={()=>document.getElementById('my_modal_6').showModal()}
-      className="btn btn-block bg-success md:bg-cyan-500 text-primary md:text-purple-800 font-bold md:font-extrabold text-lg md:text-lg ">Add Category</button>
+      className="btn btn-block bg-success md:bg-cyan-600 text-primary md:text-sky-100 font-bold md:font-extrabold text-lg md:text-lg ">Add Category</button>
 
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}

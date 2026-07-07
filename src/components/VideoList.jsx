@@ -44,7 +44,7 @@ function VideoList({ refreshTrigger }) {
         <div className="grid grid-cols-5">
           {videoData.map((item, index) => (
             <div id={`video-${index}`}
-             className="bg-green-100">
+             className="bg-violet-100">
               <VideoCard video={item} onDelete={handleDelete} id={index} />
             </div>
           ))}

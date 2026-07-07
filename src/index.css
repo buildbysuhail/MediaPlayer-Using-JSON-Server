@@ -3,7 +3,13 @@
 /* Firefox */
 .custom-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #93ad94 #e6fded;
+  scrollbar-color: #d9e6f9 #eaf1fa;
+
+  /* scrollbar-track-color: #888f8a; */
+}
+.custom-scroll-1 {
+  scrollbar-width: thin;
+  scrollbar-color: #d6cbdc #eae4fa;
 
   /* scrollbar-track-color: #888f8a; */
 }

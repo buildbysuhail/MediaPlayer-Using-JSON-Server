@@ -11,7 +11,7 @@ function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [categoryFlag, setCategoryFlag] = useState(false);
   return (
-    <div className='bg-green-50 h-screen flex flex-col overflow-hidden'>
+    <div className='bg-violet-50 h-screen flex flex-col overflow-hidden'>
       {/* Header */}
       <div className='flex md:text-3xl p-5 w-full sm:text-2xl shrink-0'>
         <h1 className='ms-5 sm:ms-39 text-violet-500 md:text-violet-800'>All Videos</h1>
@@ -26,7 +26,7 @@ function Home() {
           <AddVideo onVideoUploaded={() => setRefreshKey(prev => prev + 1)} />
         </div>
 
-        <div className="col-span-7 overflow-y-auto custom-scroll px-2 py-2 rounded-lg w-full md:w-125 lg:w-full">
+        <div className="col-span-7 overflow-y-auto custom-scroll-1 px-2 py-2 rounded-lg w-full md:w-125 lg:w-full">
           <VideoList refreshTrigger={refreshKey} />
         </div>
 
