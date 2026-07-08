@@ -30,13 +30,13 @@ function Category({ setCategoryFlag }) {
   return (
     <div>
       <button onClick={()=>document.getElementById('my_modal_6').showModal()}
-      className="btn btn-block bg-success md:bg-cyan-600 text-primary md:text-sky-100 font-bold md:font-extrabold text-lg md:text-lg ">Add Category</button>
+      className="btn btn-block bg-success md:bg-cyan-600 hover:bg-cyan-700 text-primary md:text-sky-100 font-bold md:font-extrabold text-lg md:text-lg transition-all duration-300 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.8),0_0_20px_rgba(103,232,249,0.6)]">Add Category</button>
 
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
 <dialog id="my_modal_6" className="modal modal-bottom sm:modal-middle ">
-  <div className="modal-box bg-gradient-to-b from-neutral-400 to-sky-600 sm:w-100">
+  <div className="modal-box bg-linear-to-b from-neutral-400 to-sky-600 sm:w-100">
     <h3 className="font-bold text-lg">Add Category Details..</h3>
 
     <label className="floating-label mt-2 flex justify-center">
