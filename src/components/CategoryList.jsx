@@ -120,7 +120,7 @@ console.log(categories, "categoriessssssss")
               onClick={() => deleteCategory(cat.id)}  // ✅ Fixed: was (index)
               className="btn btn-square btn-ghost btn-sm text-error"
             >
-              <i className="fa-solid fa-trash"></i>
+              <i class="fa-solid fa-delete-left"/>
             </button>
           </div>
 
