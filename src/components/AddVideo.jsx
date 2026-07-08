@@ -62,11 +62,11 @@ console.log(embedUrl, "embed url");
       {/* <ToastContainer/> */}
   <dialog id="my_modal_4" className="modal modal-bottom sm:modal-middle">
       <ToastContainer/>
-  <div className="modal-box bg-gradient-to-b from-slate-600 to-slate-400 sm:w-100">
+  <div className="modal-box bg-linear-to-b from-slate-600 to-slate-500 sm:w-100">
     {/* <ToastContainer/> */}
-    <h3 className="font-bold text-xl">Upload Video Details</h3>
+    <h3 className="font-bold text-xl text-slate-300">Upload Video Details</h3>
     <div className='max-w-lg w-full flex flex-col justify-center items-center'>
-      <label className="floating-label mt-2 ">
+      <label className="floating-label mt-2 w-full">
         <input type="text" 
           onChange={(e)=>{setVideo({...video, videoID:e.target.value})}} 
           placeholder="Video ID"
@@ -75,7 +75,7 @@ console.log(embedUrl, "embed url");
         />
           <span>video id</span>
       </label>
-      <label className="floating-label mt-2">
+      <label className="floating-label mt-2 w-full">
         <input type="text" 
           onChange={(e)=>{setVideo({...video, caption:e.target.value})}} 
           placeholder="Caption" 
@@ -83,7 +83,7 @@ console.log(embedUrl, "embed url");
           className="input input-md bg-indigo-200" />
           <span>caption</span>
       </label>
-      <label className="floating-label mt-2">
+      <label className="floating-label mt-2 w-full">
         <input type="text" 
           onChange={(e)=>{setVideo({...video, videoImgUrl:e.target.value})}} 
           placeholder="Video Image URL"
@@ -92,7 +92,7 @@ console.log(embedUrl, "embed url");
         />
           <span>image url</span>
       </label>
-      <label className="floating-label mt-2">
+      <label className="floating-label mt-2 w-full">
         <input type="text" 
           onChange={(e)=>{setVideo({...video, videoUrl:e.target.value})}} 
           placeholder="Youtube Video URL" 
@@ -106,9 +106,9 @@ console.log(embedUrl, "embed url");
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
-        <button className="btn btn-error rounded-lg shadow-2xl font-bold">Close</button>      
+        <button className="btn btn-error rounded-lg shadow-2xl font-bold text-slate-600 hover:text-slate-800">Close</button>      
       </form>
-        <button onClick={handleUpload} className="btn btn-success ml-4 rounded-lg shadow-2xl font-bold">Upload</button>
+        <button onClick={handleUpload} className="btn btn-success ml-4 rounded-lg shadow-2xl font-bold text-slate-700 hover:text-slate-800">Upload</button>
     </div>
   </div>
 </dialog>
