@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getHistory, deleteHistory } from '../services/allAPIs'
+import { getHistory, deleteHistory, clearHistory } from '../services/allAPIs'
 import { toast } from 'react-toastify';
 
 
@@ -29,6 +29,18 @@ function History() {
       toast.error("Failed to delete history item");
     }
   };
+
+  const handleclearHistory = async () => {
+    try {
+      const res = await clearHistory()
+
+      toast.success("History cleared successfully");
+      fetchHistory();
+    } catch (error) {
+      console.error("Error clearing history:", error);
+      toast.error("Failed to clear history");
+    }
+  }
 
   useEffect(() => {
     fetchHistory();
@@ -81,12 +93,15 @@ function History() {
   
 </div>
 
-<div className="dropdown dropdown-bottom">
+{/* <div className="dropdown dropdown-bottom">
   <div tabIndex={0} role="button" className="btn m-1">Click ⬇️</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
     <li><a>Item 1</a></li>
     <li><a>Item 2</a></li>
   </ul>
+</div> */}
+<div className="button btn btn-xs mt-1" onClick={handleclearHistory}>
+  Clear History
 </div>
 
 

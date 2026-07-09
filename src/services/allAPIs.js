@@ -1,6 +1,7 @@
 import { data } from "react-router-dom";
 import { base_url } from "./base_url";
 import commonApi from "./commonApi";
+import axios from "axios";
 
 //Specific API requests for all kind of CRUD Operations :-
     //POST(Because we need to Upload Videos and related Details in AddVideo)
@@ -48,6 +49,10 @@ import commonApi from "./commonApi";
 
     export const deleteHistory = async(id)=> {
         return await commonApi('DELETE', `${base_url}/history/${id}`, {})
+    }
+
+    export const clearHistory = async() => {
+        return axios.delete(`${base_url}/clearHistory`);
     }
 
 // export const allAPIs = {addVideo, getVideo, deleteVideo} 
