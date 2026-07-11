@@ -65,16 +65,18 @@ const handleDrag = (ev, val) => {
             className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
           />
         </figure>
-        <div className="card-body h-20 p-2">
+        <div className="card-body h-15 p-2">
           {/* <h2 className="card-title text-sm lg:text-md font-bold text-gray-800" title={video.caption}>
             {video.caption}
           </h2> */}
           <p className="text-[11px] text-gray-600 truncate " title={video.caption}>
             {video.caption}
           </p>
-          <button className="" onClick={() => onDelete(video.id)}>
+          <div className="w-full flex justify-end">
+            <button onClick={() => onDelete(video.id)}>
             <i className="fa-solid w-full text-right fa-trash fa-sm mt-1 text-red-600 hover:text-red-800 cursor-pointer transition-colors duration-200" />
-          </button>
+            </button>
+          </div>
         </div>
       </div>
 

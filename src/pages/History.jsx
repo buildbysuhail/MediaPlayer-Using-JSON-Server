@@ -59,7 +59,7 @@ function History() {
   return (
     <div className='p-3 bg-amber-50 flex flex-col items-center'>
       <h2 className='text-2xl text-red-900 self-start'>Watch History</h2>
-      <div className="overflow-x-auto rounded-md border-neutral-500 lg:w-[800px] xl:w-[1000px] border-base-content/5 bg-neutral-800 text-white mt-2 md:mt-3 lg:mt-4">
+      <div className="overflow-x-auto rounded-md border-neutral-500 lg:w-200 xl:w-250 border-base-content/5 bg-neutral-800 text-white mt-2 md:mt-3 lg:mt-4">
   <table className="table w-full">
     {/* head */}
     <thead>
