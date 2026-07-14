@@ -8,6 +8,7 @@ import {
 import { toast } from 'react-toastify';
 import VideoCard from './VideoCard';
 import CategoryCard from './CategoryCard';
+import ConfirmationModal from './ConfirmationModal';
 
 function CategoryList({ categoryFlag }) {
   const [categories, setCategories] = useState([]);
@@ -89,59 +90,81 @@ if (categories.length === 0) {
 }
 console.log(categories, "categoriessssssss")
   return (
-  <div className="flex flex-col min-h-0 flex-1">
-    <div className="shrink-0 bg-sky-100 px-4 py-3 text-xs opacity-60 tracking-widest uppercase bg-base-100 rounded-t-sm shadow-md">
-      Category List
-    </div>
-    <ul className="bg-sky-50 rounded-b-sm shadow-md overflow-y-auto custom-scroll flex-1">
-      {/* <li className="px-4 py-3 text-xs opacity-60 tracking-widest uppercase">
+    <div className="flex flex-col min-h-0 flex-1">
+      <div className="shrink-0 bg-sky-100 px-4 py-3 text-xs opacity-60 tracking-widest uppercase bg-base-100 rounded-t-sm shadow-md">
+        Category List
+      </div>
+      <ul className="bg-sky-50 rounded-b-sm shadow-md overflow-y-auto custom-scroll flex-1">
+        {/* <li className="px-4 py-3 text-xs opacity-60 tracking-widest uppercase">
         Category List
       </li> */}
 
-      {categories.map((cat, index) => (
-        <li
-          key={cat.id || index}
-          className="border-t border-base-200"
-          onDrop={(e) => handleDrop(e, cat?.id)}
-          onDragOver={(e) => e.preventDefault()}
-        >
-          {/* Category header row */}
-          <div className="flex items-center gap-3 px-4 py-3">
-            <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-bold shrink-0">
-              {cat.catName.charAt(0).toUpperCase()}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="font-medium truncate">{cat.catName}</div>
-              <div className="text-xs text-base-content/50">
-                {cat.catVideos.length} video{cat.catVideos.length !== 1 ? 's' : ''}
+        {categories.map((cat, index) => (
+          <li
+            key={cat.id || index}
+            className="border-t border-base-200"
+            onDrop={(e) => handleDrop(e, cat?.id)}
+            onDragOver={(e) => e.preventDefault()}
+          >
+            {/* Category header row */}
+            <div className="flex items-center gap-3 px-4 py-3">
+              <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-bold shrink-0">
+                {cat.catName.charAt(0).toUpperCase()}
               </div>
-            </div>
-            <button
-              onClick={() => deleteCategory(cat.id)}  // ✅ Fixed: was (index)
-              className="btn btn-square btn-ghost btn-sm text-error"
-            >
-              <i class="fa-solid fa-delete-left"/>
-            </button>
-          </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-medium truncate">{cat.catName}</div>
+                <div className="text-xs text-base-content/50">
+                  {cat.catVideos.length} video
+                  {cat.catVideos.length !== 1 ? "s" : ""}
+                </div>
+              </div>
+              <button
+                // onClick={() => deleteCategory(cat.id)}  // Fixed: was (index)
+                onClick={() =>
+                  document.getElementById(`Delete_cat_${cat.id}`).showModal()
+                }
+                className="btn btn-square btn-ghost btn-sm text-error"
+              >
+                <i class="fa-solid fa-delete-left" />
+              </button>
 
-          {/* Videos section */}
+                   <ConfirmationModal
+                      modalId={`Delete_cat_${cat.id}`}
+                      title={"Delete Category"}
+                      message={
+                        "Are you sure you want to delete this category?"
+                      }
+                      confirmText={"Confirm Deletion"}
+                      cancelText={"Cancel"}
+                      onConfirm={() => deleteCategory(cat.id)}
+                      confirmColor={"btn-error"}
+                    />
+            </div>
+
+            {/* Videos section */}
             {cat.catVideos.length > 0 && (
               <div className="px-3 pb-4 bg-base-200/50">
                 <div className="grid grid-cols-2 gap-2 items-start">
                   {cat.catVideos.map((video, idx) => (
                     <div key={idx} className="p-1 h-auto">
-                      <CategoryCard video={video} onDelete={() => removeVideoFromCategory(cat?.id, video?.id)} />
+                      <CategoryCard
+                        video={video}
+                        onDelete={() =>
+                          removeVideoFromCategory(cat?.id, video?.id)
+                        }
+                      />
                       {/* onDelete must pass here */}
                     </div>
                   ))}
                 </div>
+
               </div>
             )}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default CategoryList
