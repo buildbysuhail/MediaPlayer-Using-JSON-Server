@@ -1,11 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ConfirmationModal from './ConfirmationModal';
 
 const isElectron = window.suhailDesktop?.isElectron === true;
 
   // console.log("window.process =", window.process);
   // console.log("isElectron =", !!(window?.process?.type));
   console.log("isElectronnnnn", isElectron)
+
+  const DOWNLOAD_URL =
+  "https://github.com/buildbysuhail/MediaPlayer-Using-JSON-Server/releases/download/v1.0.0/Media.Player.Setup.1.0.0.exe";
+
+  const handleDownloadExe = () => {
+    window.open(DOWNLOAD_URL, "_blank");
+  };
 
 function Header() {
   return (
@@ -30,17 +38,28 @@ function Header() {
               <button
                 className="btn btn-xs sm:btn-sm md:btn-md bg-green-50 font-bold"
                 title="Download the App"
-                onClick={() => {
-                  window.location.href =
-                    "https://github.com/buildbysuhail/MediaPlayer-Using-JSON-Server/releases/download/v1.0.0/Media.Player.Setup.1.0.0.exe";
-                }}
+                onClick={() => 
+                //   {
+                //   window.location.href =
+                //     "https://github.com/buildbysuhail/MediaPlayer-Using-JSON-Server/releases/download/v1.0.0/Media.Player.Setup.1.0.0.exe";
+                // }
+                document.getElementById("download_exe_modal").showModal()
+                }
               >
                 Download
               </button>
             )}
           </div>
         </div>
-      </div>
+      </div> 
+        <ConfirmationModal 
+              modalId={"download_exe_modal"}
+              title={"Download Desktop App"}
+              message={"You are about to download the EXE (Windows compatible) file of the 'Media Player' App. Are you sure want to proceed?"}
+              confirmText={"Confirm Download"}
+              confirmColor={"btn-success"}
+              onConfirm={handleDownloadExe}
+            />
     </div>
   );
 }

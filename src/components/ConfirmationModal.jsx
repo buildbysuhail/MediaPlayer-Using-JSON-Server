@@ -9,7 +9,7 @@ function ConfirmationModal({ modalId, title, message, confirmText, cancelText, c
     <div className="modal-action">
       <form method="dialog" className='flex gap-2'>
         {/* if there is a button in form, it will close the modal */}
-        <button className="btn bg-slate-200 rounded-md">{cancelText}</button>
+        <button className="btn bg-slate-200 rounded-md">{cancelText || "Cancel"}</button>
         <button className={`btn rounded-md ${confirmColor || "btn-primary"}`} onClick={onConfirm}>
           { confirmText || "Confirm"}
         </button>

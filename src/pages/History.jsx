@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getHistory, deleteHistory, clearHistory } from '../services/allAPIs'
 import { toast } from 'react-toastify';
+import ConfirmationModal from '../components/ConfirmationModal';
 
 
 function History() {
@@ -100,9 +101,19 @@ function History() {
     <li><a>Item 2</a></li>
   </ul>
 </div> */}
-<div className="button btn btn-xs mt-1" onClick={handleclearHistory}>
+<div className="button btn btn-xs mt-1" onClick={() =>document.getElementById("clear_his007").showModal()}>
   Clear History
 </div>
+
+<ConfirmationModal 
+  modalId={"clear_his007"}
+  title={"Clear History !!"}
+  message={"This action will remove all your watch history. Are you sure you want to proceed?"}
+  confirmText={"Confirm Clear"}
+  cancelText={"Cancel"}
+  confirmColor={"btn-error"}
+  onConfirm={handleclearHistory}
+/>
 
 
     </div>
