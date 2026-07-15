@@ -33,7 +33,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            release/Media Player Setup 1.0.0.exe
+            release/Media Player Setup 1.0.1.exe
 
       # - name: Upload Build Artifacts
       #   uses: actions/upload-artifact@v4
