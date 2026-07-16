@@ -9,7 +9,7 @@ const isElectron = window.suhailDesktop?.isElectron === true;
   console.log("isElectronnnnn", isElectron)
 
   const DOWNLOAD_URL =
-  "https://github.com/buildbysuhail/MediaPlayer-Using-JSON-Server/releases/download/v1.0.0/Media.Player.Setup.1.0.2.exe";
+  "https://github.com/buildbysuhail/MediaPlayer-Using-JSON-Server/releases/download/v1.0.2/Media.Player.Setup.1.0.2.exe";
 
   const handleDownloadExe = () => {
     window.open(DOWNLOAD_URL, "_blank");
