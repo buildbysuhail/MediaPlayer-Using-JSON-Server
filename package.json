@@ -50,7 +50,8 @@
     "files": [
       "dist/**/*",
       "main.cjs",
-      "package.json"
+      "package.json",
+      "preload.cjs"
     ],
     "win": {
       "target": "nsis"
