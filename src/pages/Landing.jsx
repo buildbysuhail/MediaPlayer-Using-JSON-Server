@@ -8,7 +8,7 @@ function Landing() {
       <div className='grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5'>
             <div className="p-4 flex flex-col justify-center ms-17">
                 <h3 className='text-2xl font-bold text-blue-500 mb-2'>About This App</h3>
-                <p className='text-lg text-stone-700'><span className='hover:text-stone-500'>Media Player</span> is a platform designed for uploading, managing, and playing YouTube videos efficiently. It serves as a centralized system where users can organize and control video content, providing seamless access to a curated collection of YouTube videos.</p>
+                <p className='text-lg text-stone-700'><span className='hover:text-stone-500'>Media Player</span> is a modern desktop application that simplifies the way you organize and enjoy YouTube content. Manage your video library, create custom categories, track watch history, and experience seamless playback through an intuitive interface. With built-in OTA updates powered by GitHub Actions, the app stays current with the latest features and improvements—no manual downloads or app store visits required.</p>
                 <Link to={'/home'}  className='btn btn-info rounded-xl font-bold text-white mt-1'>Let's Go... <i className="ms-3 fa-solid text-primary fa-rocket" /></Link>
             </div>
             <div className="p-4 flex justify-center items-center">
@@ -60,6 +60,33 @@ function Landing() {
       <p className='lg:text-lg'>View a list of previously watched videos for easy access and tracking.</p>
     </div>
   </div>
+{/* card 4 */}
+     <div className="card bg-violet-50 w-full sm:w-80 md:w-96 lg:w-96 mt-3">
+    <figure className="px-10 pt-10">
+      <img style={{width:'18rem',height:'16rem'}}
+        src="https://png.pngtree.com/png-vector/20220707/ourmid/pngtree-set-of-long-shadow-glyph-icons-with-flat-design-for-online-shop-categories-vector-png-image_32546402.png"
+        alt="Shoes"
+        className="rounded-xl" />
+    </figure>
+    <div className="card-body items-center text-center">
+      <h2 className="card-title">Categories</h2>
+      <p className='lg:text-lg'>Browse videos by category for a more organized viewing experience.</p>
+    </div>
+  </div>
+{/* card 5 */}
+     <div className="card bg-violet-50 w-full sm:w-80 md:w-96 lg:w-96 mt-3">
+    <figure className="px-10 pt-10">
+      <img style={{width:'18rem',height:'16rem'}}
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqGAWKENJfKnRW8OiWcnTu9vpSnzPFSMSzjmo54m55kw&s"
+        alt="Shoes"
+        className="rounded-xl" />
+    </figure>
+    <div className="card-body items-center text-center">
+      <h2 className="card-title">Desktop Ready</h2>
+      <p className='lg:text-lg'>Run the application as a native Windows desktop app using Electron.</p>
+    </div>
+  </div>
+
        </div>
 
       </div>
@@ -68,11 +95,11 @@ function Landing() {
     <div className="bg-violet-100 rounded-lg shadow-xl p-6 m-3 lg:m-9">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className='flex flex-col justify-center  p-4'>
-            <h2 className='text-2xl font-bold text-stone-700'>Simple And Fast</h2>
-            <p className='hover:text-stone-600 lg:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. eum dolor aperiam laboriosam. Maxime doloribus aut corrupti aperiam reiciendis praesentium id minima quod consequuntur eaque!</p>
+            <h2 className='text-2xl font-bold text-stone-700'>Seamless OTA Updates</h2>
+            <p className='hover:text-stone-600 lg:text-lg'>Built with GitHub Actions, the app supports Over-the-Air (OTA) updates, allowing users to receive the latest features, performance improvements, and bug fixes without manually downloading new installers or visiting an app store.</p>
         </div>
         <div className='flex items-center justify-center'>
-        <iframe className='rounded-2xl sm:w-full md:w-103 '  height="310" src="https://www.youtube.com/embed/piBzLIdg3Ks" title="If You’re Not Motivated to Code, Do This." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe className='rounded-2xl sm:w-full md:w-103 '  height="310" src="https://www.youtube.com/embed/TsLFMxNNlBg" title="About the concept OTA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
     </div>

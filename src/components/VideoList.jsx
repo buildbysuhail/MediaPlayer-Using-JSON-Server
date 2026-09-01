@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 function VideoList({ refreshTrigger }) {
   const [videoData, setVideoData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getVideoData();
@@ -12,7 +13,9 @@ function VideoList({ refreshTrigger }) {
 
 
   const getVideoData = async () => {
+    
     try {
+      setLoading(true);
       const videos = await getVideo();
       setVideoData(videos?.data);
       console.log(videos);
@@ -20,6 +23,8 @@ function VideoList({ refreshTrigger }) {
     } catch (err) {
       console.error("Failed to fetch videos", err);
       toast.error("Failed to fetch videos. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,6 +41,14 @@ function VideoList({ refreshTrigger }) {
   // useEffect(() => {
   //   console.log("Updated videoData :", videoData);
   // }, [videoData]);
+
+  if (loading) { 
+    
+    return <div className="flex justify-center items-center bg-violet-100 h-full">
+      <span className="loading loading-bars loading-xl w-37.5"></span>
+      </div>
+  }
+
   console.log("Current videoData state:", videoData);
 
   return (
@@ -43,7 +56,9 @@ function VideoList({ refreshTrigger }) {
       {videoData?.length > 0 ? (
         <div className="grid grid-cols-5">
           {videoData.map((item, index) => (
-            <div id={`video-${index}`}
+            <div
+            key={item.id}
+            id={`video-${index}`}
              className="bg-violet-100">
               <VideoCard video={item} onDelete={handleDelete} id={index} />
             </div>

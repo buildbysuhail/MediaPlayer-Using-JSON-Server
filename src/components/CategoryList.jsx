@@ -12,12 +12,14 @@ import ConfirmationModal from './ConfirmationModal';
 
 function CategoryList({ categoryFlag }) {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchCategories();
   }, [categoryFlag]);
 
   const fetchCategories = async () => {
+    setLoading(true);
     try {
       const cat = await getCategory();
       setCategories(cat.data);
@@ -25,9 +27,18 @@ function CategoryList({ categoryFlag }) {
     } catch (err) {
       console.error("Failed to fetch categories", err);
       toast.error("Failed to fetch categories. something went wrong!!");
+    } finally {
+      setLoading(false);
     }
   };
   console.log("Current categories state:", categories);
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-full">
+      <span className="loading loading-dots loading-xl w-17.5 text-cyan-800"></span>
+    </div>
+  }
+
   if (categories.length === 0) {
     return <p className="text-gray-500">No categories available</p>;
   }
