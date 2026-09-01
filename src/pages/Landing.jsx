@@ -73,7 +73,7 @@ function Landing() {
       <p className='lg:text-lg'>Browse videos by category for a more organized viewing experience.</p>
     </div>
   </div>
-{/* card 5 */}
+{/* card 5  */}
      <div className="card bg-violet-50 w-full sm:w-80 md:w-96 lg:w-96 mt-3">
     <figure className="px-10 pt-10">
       <img style={{width:'18rem',height:'16rem'}}
